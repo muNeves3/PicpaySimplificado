@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XsY3Xq+p7zM=",
+  "dgSpecHash": "1sOge4nbqE4=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
+  "projectFilePath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Administrador\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\Administrador\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512",

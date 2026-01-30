@@ -2442,11 +2442,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
+      "projectUniqueName": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
       "projectName": "PicpaySimplificadoTests",
-      "projectPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
+      "projectPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado.Tests\\PicpaySimplificadoTests.csproj",
       "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado.Tests\\obj\\",
+      "outputPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\VisualStudioSDKShared\\NuGetPackages"
@@ -2467,8 +2467,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado\\PicpaySimplificado.csproj": {
-              "projectPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificado\\PicpaySimplificado.csproj"
+            "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado\\PicpaySimplificado.csproj": {
+              "projectPath": "C:\\Users\\Administrador\\source\\repos\\PicpaySimplificadoRepo\\PicpaySimplificado\\PicpaySimplificado.csproj"
             }
           }
         }
