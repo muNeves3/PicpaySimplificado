@@ -19,7 +19,8 @@ namespace PicpaySimplificado.Tests.Controllers
         public TransferenciaControllerTests()
         {
             _serviceMock = new Mock<ITransferenciaService>();
-            _controller = new TransferenciaController(_serviceMock.Object);
+            var loggerMock = new Mock<Microsoft.Extensions.Logging.ILogger<TransferenciaController>>();
+            _controller = new TransferenciaController(_serviceMock.Object, loggerMock.Object);
         }
 
         [Fact]

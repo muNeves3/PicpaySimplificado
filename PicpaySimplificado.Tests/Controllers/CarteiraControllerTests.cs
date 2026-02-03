@@ -17,8 +17,8 @@ namespace PicpaySimplificado.Tests.Controllers
         public CarteiraControllerTests()
         {
             _serviceMock = new Mock<ICarteiraService>();
-
-            _controller = new CarteiraController(_serviceMock.Object);
+            var loggerMock = new Mock<Microsoft.Extensions.Logging.ILogger<CarteiraController>>();
+            _controller = new CarteiraController(_serviceMock.Object, loggerMock.Object);
         }
 
         [Fact]

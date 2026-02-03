@@ -1,4 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
 using PicpaySimplificado.Infra;
 using PicpaySimplificado.Infra.Repository.Carteiras;
 using PicpaySimplificado.Infra.Repository.Transferencias;
@@ -7,10 +10,24 @@ using PicpaySimplificado.Services.Carteiras;
 using PicpaySimplificado.Services.Notificacoes;
 using PicpaySimplificado.Services.Transferencias;
 using PicPaySimplificado.Infra;
+using Prometheus;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+const string serviceName = "PicpaySimplificado";
+
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(resource => resource.AddService(serviceName))
+    .WithTracing(tracing => tracing
+        .AddAspNetCoreInstrumentation()
+        .AddHttpClientInstrumentation() 
+        .AddEntityFrameworkCoreInstrumentation() 
+        .AddConsoleExporter()) 
+    .WithMetrics(metrics => metrics
+        .AddAspNetCoreInstrumentation()
+        .AddMeter("Microsoft.AspNetCore.Hosting") 
+        .AddConsoleExporter());
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -31,6 +48,9 @@ builder.Services.AddScoped<INotificacaoService, NotificacaoService>();
 builder.Services.AddScoped<ITransferenciaService, TransferenciaService>();
 
 var app = builder.Build();
+
+app.UseHttpMetrics();
+app.MapMetrics();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -2,6 +2,7 @@
 using PicpaySimplificado.Models;
 using PicpaySimplificado.Models.Request;
 using PicpaySimplificado.Models.Response;
+using PicpaySimplificado.Metrics;
 
 namespace PicpaySimplificado.Services.Carteiras
 {
@@ -21,6 +22,7 @@ namespace PicpaySimplificado.Services.Carteiras
 
             if(carteiraExistente is not null)
             {
+                ApplicationMetrics.ErrosValidacao.WithLabels("carteira_duplicada").Inc();
                 return Result<bool>.Failure("Já existe uma carteira cadastrada com esse CPF/CNPJ ou Email.");   
             }
 
@@ -35,6 +37,9 @@ namespace PicpaySimplificado.Services.Carteiras
 
             await carteiraRepository.AddAsync(carteira);
             await carteiraRepository.CommitAsync();
+
+            ApplicationMetrics.CarteirasCriadas.WithLabels(request.UserType.ToString()).Inc();
+            ApplicationMetrics.CarteirasAtivas.Inc();
 
             return Result<bool>.Success(true);
         }

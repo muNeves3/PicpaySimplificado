@@ -1,6 +1,3 @@
-@PicpaySimplificado_HostAddress = http://localhost:5150
-
-GET {{PicpaySimplificado_HostAddress}}/weatherforecast/
-Accept: application/json
+@PicpaySimplificado_HostAddress = http://localhost:5000
 
 ###
