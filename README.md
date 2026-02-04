@@ -12,22 +12,6 @@ O que a aplicação faz
 - Integra com um serviço externo de autorização (IAutorizadorService) e um serviço de notificações (INotificacaoService).
 - Documentação automática via Swagger (apenas em ambiente de desenvolvimento).
 
-Principais rotas (expectativa / padrão REST)
--------------------------------------------
-Observação: nomes de controladores seguem o padrão comum para APIs .NET (ex.: CarteirasController, TransferenciasController).
-
-- Carteiras
-  - GET    /api/carteiras             — lista carteiras
-  - GET    /api/carteiras/{id}        — obtém carteira por id
-  - POST   /api/carteiras             — cria nova carteira
-  - PUT    /api/carteiras/{id}        — atualiza carteira
-  - DELETE /api/carteiras/{id}        — remove carteira (se implementado)
-
-- Transferências
-  - GET    /api/transferencias        — lista transferências
-  - GET    /api/transferencias/{id}   — obtém transferência por id
-  - POST   /api/transferencias        — realiza uma transferência (autoriza, debita/credito, notifica)
-
 - Documentação (dev)
   - GET /swagger
   - GET /swagger/index.html
@@ -41,6 +25,9 @@ Tecnologias e bibliotecas
 - MySQL (MySqlConnector)
 - Swagger / Swashbuckle
 - xUnit, Moq, FluentAssertions (projeto de testes)
+- Grafana (visualização das métricas)
+- Prometheus (para métricas de observabilidade)
+- Docker
 
 Configuração e execução
 -----------------------
@@ -51,10 +38,10 @@ Pré-requisitos:
 
 Executar API:
 1. Ajuste a connection string (`defaultConnection`) em appsettings.json.
-2. Aplique migrations (se houver):
-   - dotnet ef database update --project PicpaySimplificado
-3. Executar:
-   - dotnet run --project PicpaySimplificado
+2. Executar:
+   - docker compose -f docker-compose.monitoring.yml down
+   - docker compose up -d
+3. Rodar as migrations no banco do docker
 
 Executar testes:
 - dotnet test PicpaySimplificado.Tests
@@ -78,3 +65,4 @@ A solução adota arquitetura monolítica organizada em camadas alinhadas a prin
 
 Por ser monolítico, todas as camadas estão no mesmo deploy/solução, mas claramente separadas por responsabilidades para manter coesão, testabilidade e facilitar evolução.
 
+![alt text](/imagens/grafana_picpaysimplificado.png)
