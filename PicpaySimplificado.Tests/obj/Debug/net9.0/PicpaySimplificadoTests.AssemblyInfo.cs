@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PicpaySimplificadoTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e89aae46206cca6481307eabdcc3479fd2ce0962")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f04ee86ab00e190dca6da9f18c24b7cefe07ce9")]
 [assembly: System.Reflection.AssemblyProductAttribute("PicpaySimplificadoTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PicpaySimplificadoTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

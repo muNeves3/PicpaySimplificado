@@ -1,7 +1,9 @@
 global:
-  scrape_interval: 5s # Coleta dados a cada 5 segundos
+  scrape_interval: 5s
+  evaluation_interval: 5s
 
 scrape_configs:
   - job_name: 'picpay-api'
     static_configs:
-      - targets: ['host.docker.internal:5000'] # Endereço da sua API
+      - targets: ['app:8080']
+    metrics_path: '/metrics'    

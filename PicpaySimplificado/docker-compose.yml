@@ -1,0 +1,74 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: picpay-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: picpaysimplificado
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - picpay-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-ppassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: picpay-app
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__defaultConnection=Server=mysql;Port=3306;Database=picpaysimplificado;User=root;Password=password
+    ports:
+      - "5000:8080"
+    networks:
+      - picpay-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: picpay-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      - picpay-network # Agora todos estao na MESMA rede
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: picpay-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - picpay-network
+    depends_on:
+      - prometheus
+
+networks:
+  picpay-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  prometheus_data:
+  grafana_data:

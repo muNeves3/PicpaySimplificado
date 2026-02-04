@@ -67,5 +67,20 @@ namespace PicpaySimplificado.Metrics
         // Gauge para quantidade de carteiras ativas
         public static readonly Gauge CarteirasAtivas = Prometheus.Metrics
             .CreateGauge("picpay_carteiras_ativas", "Quantidade de carteiras ativas no sistema");
+
+        // Regras de cálculo sugeridas
+        /*
+        # Total de transferências
+        picpay_transferencias_total
+
+        # Taxa de transferências por segundo
+        rate(picpay_transferencias_total[1m])
+
+        # Transferências por status
+        sum by (status) (picpay_transferencias_total)
+
+        # Duração média das transferências
+        rate(picpay_transferencia_duracao_segundos_sum[5m]) / rate(picpay_transferencia_duracao_segundos_count[5m])
+        */
     }
 }

@@ -6,6 +6,53 @@ Aplicação API REST monolítica em camadas (DDD) para gerenciamento de carteiras e
 
 ---
 
+## ?? Início Rápido com Docker
+
+A forma mais fácil de executar a aplicação é usando Docker:
+
+### Pré-requisitos
+- Docker e Docker Compose instalados
+
+### Subir a aplicação completa (MySQL + API)
+
+**Linux/Mac:**
+```bash
+chmod +x docker.sh
+./docker.sh start
+```
+
+**Windows/PowerShell:**
+```powershell
+.\docker.ps1 start
+```
+
+**Ou manualmente:**
+```bash
+docker-compose up -d
+```
+
+### Verificar tabelas criadas
+
+**Linux/Mac:**
+```bash
+./docker.sh tables
+```
+
+**Windows/PowerShell:**
+```powershell
+.\docker.ps1 tables
+```
+
+### Acessar a aplicação
+
+- **API**: http://localhost:5000
+- **Swagger**: http://localhost:5000/swagger
+- **Métricas**: http://localhost:5000/metrics
+
+?? **Documentação completa do Docker**: [DOCKER.md](DOCKER.md)
+
+---
+
 ## ?? O que a aplicação faz
 
 - **Gerencia carteiras digitais** com CPF/CNPJ, email, tipo de usuário (USUARIO/LOJISTA) e saldo
@@ -68,15 +115,80 @@ GET    /swagger               — Documentação Swagger
 ### Outros
 - **Swashbuckle.AspNetCore 10.1** - Documentação Swagger
 - **SourceFlow.Stores.EntityFramework** - Padrão Repository
+- **Docker** - Containerização
 
 ---
 
-## ?? Configuração e Execução
+## ?? Configuração e Execução com Docker (Recomendado)
+
+### Usando Scripts de Automação
+
+**Linux/Mac:**
+```bash
+chmod +x docker.sh
+
+# Iniciar tudo
+./docker.sh start
+
+# Ver status
+./docker.sh status
+
+# Verificar tabelas
+./docker.sh tables
+
+# Ver logs
+./docker.sh logs
+
+# Parar
+./docker.sh stop
+
+# Limpar tudo
+./docker.sh clean
+```
+
+**Windows/PowerShell:**
+```powershell
+# Iniciar tudo
+.\docker.ps1 start
+
+# Ver status
+.\docker.ps1 status
+
+# Verificar tabelas
+.\docker.ps1 tables
+
+# Ver logs
+.\docker.ps1 logs
+
+# Parar
+.\docker.ps1 stop
+
+# Limpar tudo
+.\docker.ps1 clean
+```
+
+### Estrutura do Banco de Dados
+
+O script `init.sql` cria automaticamente:
+
+**Tabela Wallets:**
+- Id, NomeCompleto, CPFCNPJ, Email, Senha, SaldoConta, UserType
+- Índice único: CPFCNPJ + Email
+
+**Tabela Transfers:**
+- IdTransferencia, SenderId, ReciverId, Valor
+- Foreign Keys para Wallets
+- Índices: SenderId, ReciverId
+
+?? **Documentação completa**: [DOCKER.md](DOCKER.md)
+
+---
+
+## ?? Configuração e Execução Manual (Sem Docker)
 
 ### Pré-requisitos
 - **.NET 9 SDK** instalado
 - **MySQL 8.x** rodando
-- **Docker** (opcional, para observabilidade)
 
 ### 1?? Configurar Banco de Dados
 
@@ -148,7 +260,7 @@ docker-compose -f docker-compose.monitoring.yml up -d
 - `http_request_duration_seconds` - Duração das requisições
 
 ?? **Documentação completa**: [MONITORING_README.md](MONITORING_README.md)  
-?? **Guia rápido**: [MONITORING_QUICKSTART.md](MONITORING_QUICKSTART.md)
+? **Guia rápido**: [MONITORING_QUICKSTART.md](MONITORING_QUICKSTART.md)
 
 ---
 
@@ -329,7 +441,25 @@ curl http://localhost:5000/metrics
 
 ## ?? Troubleshooting
 
-### Erro de Conexão com Banco de Dados
+### Com Docker
+
+```bash
+# Verificar status dos containers
+docker-compose ps
+
+# Ver logs
+docker-compose logs -f
+
+# Verificar tabelas do banco
+docker-compose exec mysql mysql -uroot -ppassword picpaysimplificado -e "SHOW TABLES;"
+
+# Reconstruir tudo do zero
+docker-compose down -v
+docker-compose up -d
+```
+
+### Sem Docker
+
 ```bash
 # Verificar se MySQL está rodando
 mysql -u root -p
@@ -389,23 +519,26 @@ Projeto sem licença especificada. Adicione um arquivo `LICENSE` conforme necessá
 
 ## ?? Documentação Adicional
 
+- [DOCKER.md](DOCKER.md) - Guia completo Docker e containerização
 - [MONITORING_README.md](MONITORING_README.md) - Guia completo de monitoramento
 - [MONITORING_QUICKSTART.md](MONITORING_QUICKSTART.md) - Início rápido Grafana
 - [Swagger](http://localhost:5000/swagger) - Documentação da API (quando rodando)
 
 ---
 
-## ?? Roadmap Futuro
+## ??? Roadmap Futuro
 
+- [x] Containerização completa (Docker)
+- [x] Scripts de automação (docker.sh / docker.ps1)
+- [x] Inicialização automática do banco
 - [ ] Autenticação e autorização (JWT)
 - [ ] Rate limiting
 - [ ] Cache distribuído (Redis)
 - [ ] Testes de integração com banco real
 - [ ] CI/CD pipeline
-- [ ] Containerização completa (Docker)
 - [ ] Health checks avançados
 - [ ] Alertas automáticos (Alertmanager)
 
 ---
 
-**Desenvolvido com ?? usando .NET 9**
+**Desenvolvido com ?? usando .NET 9 e Docker ??**
