@@ -2,7 +2,7 @@
 
 ## Passo a Passo Rápido
 
-### 1?? Iniciar a API
+### 1 Iniciar a API
 ```bash
 cd PicpaySimplificado
 dotnet run
@@ -10,7 +10,7 @@ dotnet run
 
 A API deve estar rodando em `http://localhost:5000`
 
-### 2?? Verificar se as métricas estão disponíveis
+### 2 Verificar se as métricas estão disponíveis
 Abra no navegador: `http://localhost:5000/metrics`
 
 Você deve ver algo como:
@@ -21,17 +21,17 @@ picpay_transferencias_total{status="sucesso"} 0
 ...
 ```
 
-### 3?? Iniciar Prometheus e Grafana
+### 3 Iniciar Prometheus e Grafana
 ```bash
 docker-compose -f docker-compose.monitoring.yml up -d
 ```
 
-### 4?? Acessar Grafana
+### 4 Acessar Grafana
 1. Abra: `http://localhost:3000`
 2. Login: `admin` / `admin123`
 3. O dashboard já estará disponível automaticamente!
 
-### 5?? Gerar Dados para o Dashboard
+### 5 Gerar Dados para o Dashboard
 Execute algumas operações na API:
 
 **Criar carteira:**
@@ -59,10 +59,10 @@ curl -X POST http://localhost:5000/transfer \
   }'
 ```
 
-### 6?? Ver as Métricas no Dashboard
-Volte ao Grafana e veja os gráficos sendo atualizados em tempo real! ??
+### 6 Ver as Métricas no Dashboard
+Volte ao Grafana e veja os gráficos sendo atualizados em tempo real! 
 
-## ?? Painéis Principais
+##  Painéis Principais
 
 - **Total de Transferências**: Quantas transferências foram feitas
 - **Taxa de Sucesso/Falha**: Linha do tempo de transferências
@@ -71,19 +71,19 @@ Volte ao Grafana e veja os gráficos sendo atualizados em tempo real! ??
 - **Carteiras Ativas**: Quantas carteiras existem
 - **Erros**: Tipos de erros que ocorrem
 
-## ?? Parar Tudo
+##  Parar Tudo
 ```bash
 docker-compose -f docker-compose.monitoring.yml down
 ```
 
-## ?? Notas Importantes
+##  Notas Importantes
 
 - O Grafana atualiza a cada 5 segundos
 - O Prometheus coleta dados da API a cada 5 segundos
 - Os dados são persistidos nos volumes Docker
 - Para limpar tudo: `docker-compose -f docker-compose.monitoring.yml down -v`
 
-## ?? Problemas?
+##  Problemas?
 
 **Dashboard vazio?**
 - Execute operações na API (criar carteiras, transferências)

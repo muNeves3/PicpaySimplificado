@@ -2,7 +2,7 @@
 
 Este guia explica como configurar e usar o sistema de monitoramento da aplicação PicPay Simplificado com Prometheus e Grafana.
 
-## ?? Métricas Monitoradas
+## Métricas Monitoradas
 
 ### Métricas de Negócio
 - **Total de Transferências**: Contador de todas as transferências realizadas (por status)
@@ -18,7 +18,7 @@ Este guia explica como configurar e usar o sistema de monitoramento da aplicação
 - **Códigos de Status HTTP**: Distribuição de respostas (200, 400, 500, etc)
 - **Latência HTTP**: Tempo de resposta das requisições
 
-## ?? Como Executar
+## Como Executar
 
 ### Pré-requisitos
 - Docker e Docker Compose instalados
@@ -45,7 +45,7 @@ Isso irá iniciar:
 
 O dashboard **"PicPay Simplificado - Dashboard Completo"** será carregado automaticamente.
 
-## ?? Painéis do Dashboard
+## Painéis do Dashboard
 
 ### 1. **Visão Geral (Top)**
 - Total de Transferências
@@ -64,7 +64,7 @@ O dashboard **"PicPay Simplificado - Dashboard Completo"** será carregado automa
 - Taxa de Erros de Validação por Tipo
 - Requisições HTTP por Código de Status (tabela)
 
-## ?? Configuração
+##  Configuração
 
 ### Alterar Porta da API
 
@@ -87,7 +87,7 @@ environment:
   - GF_SECURITY_ADMIN_PASSWORD=sua_senha
 ```
 
-## ?? Acessar Prometheus Diretamente
+## Acessar Prometheus Diretamente
 
 Para queries personalizadas, acesse: `http://localhost:9090`
 
@@ -119,7 +119,7 @@ Para remover também os volumes (dados persistidos):
 docker-compose -f docker-compose.monitoring.yml down -v
 ```
 
-## ?? Troubleshooting
+## Troubleshooting
 
 ### Grafana não mostra dados
 
@@ -134,7 +134,7 @@ docker-compose -f docker-compose.monitoring.yml down -v
 2. Aguarde 5-10 segundos (intervalo de scrape)
 3. Refresh no dashboard do Grafana
 
-## ?? Personalização
+## Personalização
 
 ### Adicionar Novas Métricas
 
@@ -153,14 +153,14 @@ public static readonly Counter MinhaMetrica = Prometheus.Metrics
 ApplicationMetrics.MinhaMetrica.Inc();
 ```
 
-## ?? Alertas (Configuração Futura)
+## Alertas (Configuração Futura)
 
 Para configurar alertas, você pode:
 1. Usar Alertmanager do Prometheus
 2. Configurar alertas no Grafana
 3. Integrar com Slack, Email, PagerDuty, etc.
 
-## ?? Referências
+## Referências
 
 - [Prometheus Documentation](https://prometheus.io/docs/)
 - [Grafana Documentation](https://grafana.com/docs/)

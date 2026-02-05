@@ -65,7 +65,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total de Transferências",
+      "title": "Total de Transferï¿½ncias",
       "type": "stat"
     },
     {
@@ -165,7 +165,7 @@
           "refId": "A"
         }
       ],
-      "title": "Autorizações Negadas",
+      "title": "Autorizaï¿½ï¿½es Negadas",
       "type": "stat"
     },
     {
@@ -230,11 +230,11 @@
       "targets": [
         {
           "expr": "rate(http_requests_received_total[5m])",
-          "legendFormat": "Requisições/s",
+          "legendFormat": "Requisiï¿½ï¿½es/s",
           "refId": "A"
         }
       ],
-      "title": "Taxa de Requisições HTTP",
+      "title": "Taxa de Requisiï¿½ï¿½es HTTP",
       "type": "timeseries"
     },
     {
@@ -303,21 +303,21 @@
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_autorizacao\"}[5m])",
-          "legendFormat": "Falha Autorização",
+          "legendFormat": "Falha Autorizaï¿½ï¿½o",
           "refId": "B"
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_validacao\"}[5m])",
-          "legendFormat": "Falha Validação",
+          "legendFormat": "Falha Validaï¿½ï¿½o",
           "refId": "C"
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_transacao\"}[5m])",
-          "legendFormat": "Falha Transação",
+          "legendFormat": "Falha Transaï¿½ï¿½o",
           "refId": "D"
         }
       ],
-      "title": "Taxa de Transferências por Status",
+      "title": "Taxa de Transferï¿½ncias por Status",
       "type": "timeseries"
     },
     {
@@ -362,7 +362,7 @@
           "refId": "A"
         }
       ],
-      "title": "Distribuição de Status das Transferências",
+      "title": "Distribuiï¿½ï¿½o de Status das Transferï¿½ncias",
       "type": "piechart"
     },
     {
@@ -373,7 +373,7 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "Duração (segundos)",
+            "axisLabel": "Duraï¿½ï¿½o (segundos)",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -452,7 +452,7 @@
           "refId": "C"
         }
       ],
-      "title": "Latência de Transferências (Percentis)",
+      "title": "Latï¿½ncia de Transferï¿½ncias (Percentis)",
       "type": "timeseries"
     },
     {
@@ -493,11 +493,11 @@
       "targets": [
         {
           "expr": "sum by(le) (picpay_transferencia_valor_bucket)",
-          "legendFormat": "até {{le}}",
+          "legendFormat": "atï¿½ {{le}}",
           "refId": "A"
         }
       ],
-      "title": "Distribuição de Valores de Transferências",
+      "title": "Distribuiï¿½ï¿½o de Valores de Transferï¿½ncias",
       "type": "piechart"
     },
     {
@@ -565,7 +565,7 @@
           "refId": "A"
         }
       ],
-      "title": "Taxa de Criação de Carteiras por Tipo",
+      "title": "Taxa de Criaï¿½ï¿½o de Carteiras por Tipo",
       "type": "timeseries"
     },
     {
@@ -633,7 +633,7 @@
           "refId": "A"
         }
       ],
-      "title": "Taxa de Erros de Validação por Tipo",
+      "title": "Taxa de Erros de Validaï¿½ï¿½o por Tipo",
       "type": "timeseries"
     },
     {
@@ -678,7 +678,7 @@
           "refId": "A"
         }
       ],
-      "title": "Requisições HTTP por Código de Status",
+      "title": "Requisiï¿½ï¿½es HTTP por Cï¿½digo de Status",
       "transformations": [
         {
           "id": "organize",
@@ -688,7 +688,7 @@
             },
             "indexByName": {},
             "renameByName": {
-              "code": "Código HTTP",
+              "code": "Cï¿½digo HTTP",
               "Value": "Total"
             }
           }
