@@ -4,25 +4,25 @@ namespace PicpaySimplificado.Metrics
 {
     public static class ApplicationMetrics
     {
-        // Contador de transferências realizadas
+        // Contador de transferï¿½ncias realizadas
         public static readonly Counter TransferenciasRealizadas = Prometheus.Metrics
-            .CreateCounter("picpay_transferencias_total", "Total de transferências realizadas",
+            .CreateCounter("picpay_transferencias_total", "Total de transferÃªncias realizadas",
                 new CounterConfiguration
                 {
                     LabelNames = new[] { "status" }
                 });
 
-        // Contador de transferências por tipo de usuário
+        // Contador de transferï¿½ncias por tipo de usuï¿½rio
         public static readonly Counter TransferenciasPorTipoUsuario = Prometheus.Metrics
-            .CreateCounter("picpay_transferencias_por_tipo_usuario_total", "Total de transferências por tipo de usuário",
+            .CreateCounter("picpay_transferencias_por_tipo_usuario_total", "Total de transferÃªncias por tipo de usuÃ¡rio",
                 new CounterConfiguration
                 {
                     LabelNames = new[] { "tipo_usuario" }
                 });
 
-        // Histograma de valores de transferências
+        // Histograma de valores de transferï¿½ncias
         public static readonly Histogram ValoresTransferencia = Prometheus.Metrics
-            .CreateHistogram("picpay_transferencia_valor", "Distribuição de valores de transferências",
+            .CreateHistogram("picpay_transferencia_valor", "DistribuiÃ§Ã£o de valores de transferÃªncias",
                 new HistogramConfiguration
                 {
                     Buckets = Histogram.LinearBuckets(10, 50, 10)
@@ -40,25 +40,25 @@ namespace PicpaySimplificado.Metrics
                     LabelNames = new[] { "tipo_usuario" }
                 });
 
-        // Contador de autorizações negadas
+        // Contador de autorizaï¿½ï¿½es negadas
         public static readonly Counter AutorizacoesNegadas = Prometheus.Metrics
-            .CreateCounter("picpay_autorizacoes_negadas_total", "Total de autorizações negadas");
+            .CreateCounter("picpay_autorizacoes_negadas_total", "Total de autorizaÃ§Ãµes negadas");
 
-        // Contador de notificações enviadas
+        // Contador de notificaï¿½ï¿½es enviadas
         public static readonly Counter NotificacoesEnviadas = Prometheus.Metrics
-            .CreateCounter("picpay_notificacoes_enviadas_total", "Total de notificações enviadas",
+            .CreateCounter("picpay_notificacoes_enviadas_total", "Total de notificaÃ§Ãµes enviadas",
                 new CounterConfiguration
                 {
                     LabelNames = new[] { "status" }
                 });
 
-        // Histograma de duração das transferências
+        // Histograma de duraï¿½ï¿½o das transferï¿½ncias
         public static readonly Histogram DuracaoTransferencias = Prometheus.Metrics
-            .CreateHistogram("picpay_transferencia_duracao_segundos", "Duração das transferências em segundos");
+            .CreateHistogram("picpay_transferencia_duracao_segundos", "DuraÃ§Ã£o das transferï¿½ncias em segundos");
 
-        // Contador de erros de validação
+        // Contador de erros de validaï¿½ï¿½o
         public static readonly Counter ErrosValidacao = Prometheus.Metrics
-            .CreateCounter("picpay_erros_validacao_total", "Total de erros de validação",
+            .CreateCounter("picpay_erros_validacao_total", "Total de erros de validaÃ§Ã£o",
                 new CounterConfiguration
                 {
                     LabelNames = new[] { "tipo_erro" }
@@ -68,18 +68,18 @@ namespace PicpaySimplificado.Metrics
         public static readonly Gauge CarteirasAtivas = Prometheus.Metrics
             .CreateGauge("picpay_carteiras_ativas", "Quantidade de carteiras ativas no sistema");
 
-        // Regras de cálculo sugeridas
+        // Regras de cï¿½lculo sugeridas
         /*
-        # Total de transferências
+        # Total de transferï¿½ncias
         picpay_transferencias_total
 
-        # Taxa de transferências por segundo
+        # Taxa de transferï¿½ncias por segundo
         rate(picpay_transferencias_total[1m])
 
-        # Transferências por status
+        # Transferï¿½ncias por status
         sum by (status) (picpay_transferencias_total)
 
-        # Duração média das transferências
+        # Duraï¿½ï¿½o mï¿½dia das transferï¿½ncias
         rate(picpay_transferencia_duracao_segundos_sum[5m]) / rate(picpay_transferencia_duracao_segundos_count[5m])
         */
     }

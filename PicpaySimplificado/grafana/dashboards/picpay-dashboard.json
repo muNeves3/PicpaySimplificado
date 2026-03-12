@@ -65,7 +65,7 @@
           "refId": "A"
         }
       ],
-      "title": "Total de Transfer�ncias",
+      "title": "Total de Transferências",
       "type": "stat"
     },
     {
@@ -165,7 +165,7 @@
           "refId": "A"
         }
       ],
-      "title": "Autoriza��es Negadas",
+      "title": "Autorizações Negadas",
       "type": "stat"
     },
     {
@@ -230,11 +230,11 @@
       "targets": [
         {
           "expr": "rate(http_requests_received_total[5m])",
-          "legendFormat": "Requisi��es/s",
+          "legendFormat": "Requisições/s",
           "refId": "A"
         }
       ],
-      "title": "Taxa de Requisi��es HTTP",
+      "title": "Taxa de Requisições HTTP",
       "type": "timeseries"
     },
     {
@@ -303,21 +303,21 @@
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_autorizacao\"}[5m])",
-          "legendFormat": "Falha Autoriza��o",
+          "legendFormat": "Falha Autorização",
           "refId": "B"
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_validacao\"}[5m])",
-          "legendFormat": "Falha Valida��o",
+          "legendFormat": "Falha Validação",
           "refId": "C"
         },
         {
           "expr": "rate(picpay_transferencias_total{status=\"falha_transacao\"}[5m])",
-          "legendFormat": "Falha Transa��o",
+          "legendFormat": "Falha Transação",
           "refId": "D"
         }
       ],
-      "title": "Taxa de Transfer�ncias por Status",
+      "title": "Taxa de Transferências por Status",
       "type": "timeseries"
     },
     {
@@ -362,7 +362,7 @@
           "refId": "A"
         }
       ],
-      "title": "Distribui��o de Status das Transfer�ncias",
+      "title": "Distribuição de Status das Transferências",
       "type": "piechart"
     },
     {
@@ -373,7 +373,7 @@
             "mode": "palette-classic"
           },
           "custom": {
-            "axisLabel": "Dura��o (segundos)",
+            "axisLabel": "Duração (segundos)",
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -452,7 +452,7 @@
           "refId": "C"
         }
       ],
-      "title": "Lat�ncia de Transfer�ncias (Percentis)",
+      "title": "Latência de Transferências (Percentis)",
       "type": "timeseries"
     },
     {
@@ -493,11 +493,11 @@
       "targets": [
         {
           "expr": "sum by(le) (picpay_transferencia_valor_bucket)",
-          "legendFormat": "at� {{le}}",
+          "legendFormat": "até {{le}}",
           "refId": "A"
         }
       ],
-      "title": "Distribui��o de Valores de Transfer�ncias",
+      "title": "Distribuição de Valores de Transferências",
       "type": "piechart"
     },
     {
@@ -565,7 +565,7 @@
           "refId": "A"
         }
       ],
-      "title": "Taxa de Cria��o de Carteiras por Tipo",
+      "title": "Taxa de Criação de Carteiras por Tipo",
       "type": "timeseries"
     },
     {
@@ -633,7 +633,7 @@
           "refId": "A"
         }
       ],
-      "title": "Taxa de Erros de Valida��o por Tipo",
+      "title": "Taxa de Erros de Validação por Tipo",
       "type": "timeseries"
     },
     {
@@ -678,7 +678,7 @@
           "refId": "A"
         }
       ],
-      "title": "Requisi��es HTTP por C�digo de Status",
+      "title": "Requisições HTTP por Código de Status",
       "transformations": [
         {
           "id": "organize",
@@ -688,7 +688,7 @@
             },
             "indexByName": {},
             "renameByName": {
-              "code": "C�digo HTTP",
+              "code": "Código HTTP",
               "Value": "Total"
             }
           }
